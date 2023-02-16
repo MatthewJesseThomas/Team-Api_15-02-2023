@@ -15,7 +15,7 @@ router.get("/", (req, res) =>{
 });
 router.get("/:id", (req, res) =>{
     try{
-        con.query(`SELECT FROM Products WHERE id=${req.params.product_id}`, (err, results) =>{
+        con.query(`SELECT * FROM Products WHERE product_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) =>{
 });
 router.delete("/:id", (req, res) =>{
     try{
-        con.query(`DELETE FROM Products WHERE id=${req.params.product_id}`, (err, results) =>{
+        con.query(`DELETE FROM Products WHERE product_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });

@@ -59,7 +59,7 @@ router.put("/:id", (req, res) =>{
 });
 router.delete("/:id", (req, res) =>{
     try{
-        con.query(`DELETE FROM Orders WHERE id=${req.params.id}`, (err, results) =>{
+        con.query(`DELETE FROM Orders WHERE Order_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
