@@ -15,7 +15,7 @@ router.get("/", (req, res) =>{
 });
 router.get("/:id", (req, res) =>{
     try{
-        con.query(`SELECT FROM Orders WHERE id=${req.params.id}`, (err, results) =>{
+        con.query(`SELECT * FROM Orders WHERE order_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
