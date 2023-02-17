@@ -26,7 +26,7 @@ router.get("/:id", (req, res) =>{
 });
 router.post("/", (req, res) =>{
     try{
-        con.query(`INSERT INTO Users(email, password, full_name, billing_address, default_shipping_address, country, phone) VALUE "${req.body.email}","${req.body.password}","${req.body.full_name}","${req.body.billing_address}","${req.body.default_shipping_address}","${req.body.country}","${req.body.phone}"`, (err, results) =>{
+        con.query(`INSERT INTO Users(email, password, full_name, billing_address, default_shipping_address, country, phone) VALUE ("${req.body.email}","${req.body.password}","${req.body.full_name}","${req.body.billing_address}","${req.body.default_shipping_address}","${req.body.country}","${req.body.phone}")`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
