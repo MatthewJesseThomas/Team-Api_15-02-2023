@@ -40,7 +40,7 @@ router.post("/", (req, res) =>{
 });
 router.patch("/", (req, res) =>{
     try{
-        con.query(`UPDATE Users SET email = "${req.body.email}", password = "${req.body.password}", full_name = "${req.body.full_name}", billing_address = "${req.body.billing_address}", default_shipping_address = "${req.body.default_shipping_address}", country = "${req.body.country}", phone = "${req.body.phone}" WHERE user_id = ${req.params.id}`, (err, results) =>{
+        con.query(`UPDATE Users SET WHERE id = "${req.body.email}", password = "${req.body.password}", full_name = "${req.body.full_name}", billing_address = "${req.body.billing_address}", default_shipping_address = "${req.body.default_shipping_address}", country = "${req.body.country}", phone = "${req.body.phone}" WHERE user_id = ${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -51,7 +51,7 @@ router.patch("/", (req, res) =>{
 });
 router.put("/:id", (req, res) =>{
     try{
-        con.query(`UPDATE Users SET email = "${req.body.email}", password = "${req.body.password}", full_name = "${req.body.full_name}", billing_address = "${req.body.billing_address}", default_shipping_address = "${req.body.default_shipping_address}", country = "${req.body.country}", phone = "${req.body.phone}" WHERE user_id = ${req.params.id}`, (err, results) =>{
+        con.query(`UPDATE Users SET WHERE id = "${req.body.email}", password = "${req.body.password}", full_name = "${req.body.full_name}", billing_address = "${req.body.billing_address}", default_shipping_address = "${req.body.default_shipping_address}", country = "${req.body.country}", phone = "${req.body.phone}" WHERE user_id = ${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
