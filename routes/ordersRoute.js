@@ -26,7 +26,7 @@ router.get("/:id", (req, res) =>{
 });
 router.post("/", (req, res) =>{
     try{
-        con.query(`INSERT INTO Orders(order_name, billing_address, default_shipping_address, product_id, id) VALUE ${req.body.order_name},${req.body.billing_address},${req.body.default_shipping_address},${req.body.product_id},${req.body.id}`, (err, results) =>{
+        con.query(`INSERT INTO Orders(order_name, billing_address, default_shipping_address, product_id, id) VALUE ("${req.body.order_name}","${req.body.billing_address}","${req.body.default_shipping_address}","${req.body.product_id}","${req.body.id}")`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });

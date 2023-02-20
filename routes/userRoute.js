@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const con = require("../lib/db_connection");
+const {hash, compare, hashSync} = require("bcrypt");
 
 // Message Middleware
 const { message } = require("../middleware/message");
