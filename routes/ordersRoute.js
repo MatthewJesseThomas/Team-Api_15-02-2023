@@ -48,7 +48,7 @@ router.patch("/", (req, res) =>{
 });
 router.put("/:id", (req, res) =>{
     try{
-        con.query(`UPDATE Orders SET order_name = ${req.body.order_name},${req.body.billing_address},${req.body.default_shipping_address},${req.body.product_id},${req.body.id}`, (err, results) =>{
+        con.query(`UPDATE Orders SET order_name = "${req.body.order_name}",billing_address = "${req.body.billing_address}", default_shipping_address = "${req.body.default_shipping_address}", product_id = "${req.body.product_id}","${req.body.id}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) =>{
 });
 router.delete("/:id", (req, res) =>{
     try{
-        con.query(`DELETE FROM Orders WHERE Order_id=${req.params.id}`, (err, results) =>{
+        con.query(`DELETE FROM Orders WHERE Order_id= "${req.params.id}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });

@@ -15,7 +15,7 @@ router.get("/", (req, res) =>{
 });
 router.get("/:id", (req, res) =>{
     try{
-        con.query(`SELECT FROM Category WHERE id=${req.params.category_id}`, (err, results) =>{
+        con.query(`SELECT FROM Category WHERE category_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -26,7 +26,7 @@ router.get("/:id", (req, res) =>{
 });
 router.post("/", (req, res) =>{
     try{
-        con.query(`INSERT INTO Category(order_name) VALUE ${req.body.category_name}`, (err, results) =>{
+        con.query(`INSERT INTO Category(order_name) VALUE ("${req.body.category_name}")`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -37,7 +37,7 @@ router.post("/", (req, res) =>{
 });
 router.patch("/", (req, res) =>{
     try{
-        con.query(`UPDATE Category SET category_name = ${req.body.category_name}`, (err, results) =>{
+        con.query(`UPDATE Category SET category_name = "${req.body.category_name}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -48,7 +48,7 @@ router.patch("/", (req, res) =>{
 });
 router.put("/:id", (req, res) =>{
     try{
-        con.query(`UPDATE Category SET category_name = ${req.body.category_name}`, (err, results) =>{
+        con.query(`UPDATE Category SET category_name = "${req.body.category_name}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) =>{
 });
 router.delete("/:id", (req, res) =>{
     try{
-        con.query(`DELETE FROM Category WHERE id=${req.params.category_id}`, (err, results) =>{
+        con.query(`DELETE FROM Category WHERE category_id= "${req.params.category_id}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
