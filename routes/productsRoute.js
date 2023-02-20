@@ -27,7 +27,7 @@ router.get("/:id", (req, res) =>{
 });
 router.post("/", (req, res) =>{
     try{
-        con.query(`INSERT INTO Products(product_name, price, Qty, category_id) VALUE ${req.body.product_name},${req.body.price},${req.body.Qty},${req.body.category_id}`, (err, results) =>{
+        con.query(`INSERT INTO Products(product_name, price, Qty, category_id) VALUE ("${req.body.product_name}","${req.body.price}","${req.body.Qty}","${req.body.category_id}")`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -36,9 +36,9 @@ router.post("/", (req, res) =>{
         res.status(400).send(error)
     }
 });
-router.patch("/", (req, res) =>{
+router.patch("/:id", (req, res) =>{
     try{
-        con.query(`UPDATE Products SET product_name = ${req.body.product_name},${req.body.price},${req.body.Qty},${req.body.category_id}`, (err, results) =>{
+        con.query(`UPDATE Products SET product_name = "${req.body.product_name}", price = "${req.body.price}", Qty = "${req.body.Qty}", category_id = "${req.body.category_id}" WHERE product_id = ${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -49,7 +49,7 @@ router.patch("/", (req, res) =>{
 });
 router.put("/:id", (req, res) =>{
     try{
-        con.query(`UPDATE Products SET product_name = ${req.body.product_name},${req.body.price},${req.body.Qty},${req.body.category_id}`, (err, results) =>{
+        con.query(`UPDATE Products SET product_name = "${req.body.product_name}",price = "${req.body.price}",Qty = "${req.body.Qty}",category_id = "${req.body.category_id}" WHERE product_id = ${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
