@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
+// Middleware ErrorHandling
+const { errorHandling } = require("./middleware/ErrorHandling");
 
 app.set("port", process.env.PORT || 6969);
 app.use(express.json());
@@ -29,3 +31,5 @@ app.listen(app.get("port"), () =>{
     console.log(`Listening For Calls On Port ${app.get("port")}`);
     console.log("Press Ctrl+C to exit server");
 });
+
+app.use(errorHandling);

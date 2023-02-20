@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 const con = require("../lib/db_connection");
 
-router.get("/", (req, res) =>{
+// Message Middleware
+const { message } = require("../middleware/message");
+
+router.get("/", message, (req, res, next) =>{
     try{
         con.query("SELECT * FROM Users", (err, results) =>{
             if(err) throw err;
@@ -15,7 +18,7 @@ router.get("/", (req, res) =>{
 });
 router.get("/:id", (req, res) =>{
     try{
-        con.query(`SELECT FROM Users WHERE id=${req.params.id}`, (err, results) =>{
+        con.query(`SELECT * FROM Users WHERE id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });

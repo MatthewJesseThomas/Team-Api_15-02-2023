@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const con = require("../lib/db_connection");
+const { message } = require("../middleware/message");
 
-router.get("/", (req, res) =>{
+router.get("/", message, (req, res) =>{
     try{
         con.query("SELECT * FROM Products", (err, results) =>{
             if(err) throw err;
