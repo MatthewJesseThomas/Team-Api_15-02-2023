@@ -24,7 +24,7 @@ app.use('/categories', categoriesRouter);
 app.use('/products', productsRouter);
 
 app.get('/', (req, res) =>{
-    res.json({ message: "Welcome To The Store!!!"});
+    res.json({ message: "Welcome To The Mein Hur!!!"});
 });
 
 app.listen(app.get("port"), () =>{
